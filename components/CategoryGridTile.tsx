@@ -4,6 +4,7 @@ import Category from '../models/category';
 import { useLinkProps, useLinkTo } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
+import CardWrapper from './CardWrapper';
 
 const CategoryGridTile: React.FC<Category & { onPress?: () => void }> = ({
   color,
@@ -11,7 +12,7 @@ const CategoryGridTile: React.FC<Category & { onPress?: () => void }> = ({
   onPress,
 }) => {
   return (
-    <View style={styles.container}>
+    <CardWrapper style={styles.container}>
       <Pressable
         style={({ pressed }) => [
           styles.button,
@@ -24,7 +25,7 @@ const CategoryGridTile: React.FC<Category & { onPress?: () => void }> = ({
           <Text style={styles.title}>{title}</Text>
         </View>
       </Pressable>
-    </View>
+    </CardWrapper>
   );
 };
 
@@ -32,20 +33,10 @@ export default CategoryGridTile;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     margin: 16,
     height: 150,
-    elevation: 4,
     borderRadius: 8,
     backgroundColor: 'white',
-    shadowColor: 'black',
-    overflow: Platform.select({ android: 'hidden', ios: 'visible' }),
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
   },
   button: { flex: 1 },
   buttonPressed: {
